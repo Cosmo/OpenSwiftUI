@@ -3,22 +3,22 @@ import Foundation
 public struct Button<Label: View>: View {
     public typealias Body = Label
     
-    let label: Label
-    let action: () -> Void
+    public let _label: Label
+    public let _action: () -> Void
     
     public var body: Self.Body {
-        return label
+        return _label
     }
     
     public init(action: @escaping () -> Void, @ViewBuilder label: () -> Label) {
-        self.action = action
-        self.label = label()
+        self._action = action
+        self._label = label()
     }
 }
 
 extension Button where Label == Text {
     public init<S: StringProtocol>(_ title: S, action: @escaping () -> Void) {
-        self.action = action
-        self.label = Text(title)
+        self._action = action
+        self._label = Text(title)
     }
 }

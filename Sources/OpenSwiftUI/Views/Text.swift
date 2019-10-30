@@ -2,17 +2,17 @@ import Foundation
 
 public struct Text: View, Equatable {
     public typealias Body = Never
-    var content: String
+    public var _content: String
     
     public init(verbatim content: String) {
-        self.content = content
+        self._content = content
     }
     
     public init<S>(_ content: S) where S: StringProtocol {
-        self.content = String(content)
+        self._content = String(content)
     }
     
     public static func == (lhs: Text, rhs: Text) -> Bool {
-        return lhs.content == rhs.content
+        return lhs._content == rhs._content
     }
 }
