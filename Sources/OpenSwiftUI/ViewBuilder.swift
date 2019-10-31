@@ -1,11 +1,22 @@
 @_functionBuilder
 public struct ViewBuilder {
+    public static func buildBlock() -> EmptyView {
+        return EmptyView()
+    }
+    
     public static func buildBlock<Content>(_ content: Content) -> Content where Content: View {
         return content
     }
     
     public static func buildIf<Content>(_ content: Content?) -> Content? where Content: View {
         return content
+    }
+    
+    public static func buildEither<TrueContent, FalseContent>(first: TrueContent) -> _ConditionalContent<TrueContent, FalseContent> where TrueContent: View, FalseContent: View {
+        _ConditionalContent(first: first)
+    }
+    public static func buildEither<TrueContent, FalseContent>(second: FalseContent) -> _ConditionalContent<TrueContent, FalseContent> where TrueContent: View, FalseContent: View {
+        _ConditionalContent(second: second)
     }
 }
 
