@@ -8,3 +8,9 @@ public struct TupleView<T>: View {
         self.value = value
     }
 }
+
+extension TupleView {
+    public var body: Never {
+        fatalError()
+    }
+}

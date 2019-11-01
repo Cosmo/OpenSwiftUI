@@ -15,3 +15,9 @@ public struct _ConditionalContent<TrueContent, FalseContent>: View where TrueCon
         _storage = .second(second)
     }
 }
+
+extension _ConditionalContent {
+    public var body: Never {
+        fatalError()
+    }
+}

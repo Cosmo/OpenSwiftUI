@@ -6,3 +6,9 @@ public struct Circle: View, Equatable {
     public init() {
     }
 }
+
+extension Circle {
+    public var body: Never {
+        fatalError()
+    }
+}

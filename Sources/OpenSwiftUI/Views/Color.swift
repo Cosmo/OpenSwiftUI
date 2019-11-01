@@ -64,6 +64,12 @@ extension Color: View {
     public static let secondary: Color = Color(red: 0.8, green: 0.8, blue: 0.8)
 }
 
+extension Color {
+    public var body: Never {
+        fatalError()
+    }
+}
+
 extension View {
     public func foregroundColor(_ color: Color?) -> some View {
         return self

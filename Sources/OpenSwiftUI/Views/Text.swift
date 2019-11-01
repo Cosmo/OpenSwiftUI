@@ -16,3 +16,9 @@ public struct Text: View, Equatable {
         return lhs._content == rhs._content
     }
 }
+
+extension Text {
+    public var body: Never {
+        fatalError()
+    }
+}

@@ -12,3 +12,9 @@ public struct VStack<Content>: View where Content: View {
         self._content = content()
     }
 }
+
+extension VStack {
+    public var body: Never {
+        fatalError()
+    }
+}

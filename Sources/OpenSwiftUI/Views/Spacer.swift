@@ -6,3 +6,9 @@ public struct Spacer: View, Equatable {
     public init() {
     }
 }
+
+extension Spacer {
+    public var body: Never {
+        fatalError()
+    }
+}

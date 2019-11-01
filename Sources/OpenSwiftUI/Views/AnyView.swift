@@ -10,6 +10,12 @@ public struct AnyView: View {
     public typealias Body = Never
 }
 
+extension AnyView {
+    public var body: Never {
+        fatalError()
+    }
+}
+
 extension AnyView: CustomDebugStringConvertible {
     public var debugDescription: String {
         return "AnyView"

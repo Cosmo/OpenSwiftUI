@@ -12,3 +12,9 @@ public struct HStack<Content>: View where Content: View {
         self._content = content()
     }
 }
+
+extension HStack {
+    public var body: Never {
+        fatalError()
+    }
+}

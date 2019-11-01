@@ -10,3 +10,9 @@ public struct ZStack<Content>: View where Content: View {
         self._content = content()
     }
 }
+
+extension ZStack {
+    public var body: Never {
+        fatalError()
+    }
+}
