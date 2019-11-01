@@ -19,8 +19,4 @@ public struct EdgeInsets: Equatable {
         self.bottom = 0
         self.trailing = 0
     }
-    
-    public static func == (a: EdgeInsets, b: EdgeInsets) -> Bool {
-        return false
-    }
 }

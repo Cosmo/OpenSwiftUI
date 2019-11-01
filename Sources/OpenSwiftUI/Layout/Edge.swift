@@ -14,15 +14,14 @@ public enum Edge: Int8, CaseIterable {
         public typealias RawValue = Int8
         public let rawValue: Int8
         
-        public static let top: Edge.Set = Edge.Set(rawValue: Set(.top).rawValue)
-        public static let leading: Edge.Set = Edge.Set(rawValue: Set(.leading).rawValue)
-        public static let bottom: Edge.Set = Edge.Set(rawValue: Set(.bottom).rawValue)
-        public static let trailing: Edge.Set = Edge.Set(rawValue: Set(.trailing).rawValue)
-        public static let horizontal: Edge.Set = Edge.Set(rawValue: Edge.leading.rawValue + Edge.trailing.rawValue)
-        public static let vertical: Edge.Set = Edge.Set(rawValue: Edge.top.rawValue + Edge.bottom.rawValue)
+        public static let top = Element(.top)
+        public static let leading = Element(.leading)
+        public static let bottom = Element(.bottom)
+        public static let trailing = Element(.trailing)
+        public static let horizontal = Element(rawValue: Edge.leading.rawValue + Edge.trailing.rawValue)
+        public static let vertical = Element(rawValue: Edge.top.rawValue + Edge.bottom.rawValue)
         
-        public static let all: Edge.Set = Edge.Set(rawValue: 43)
-        
+        public static let all = Element(rawValue: Edge.top.rawValue + Edge.bottom.rawValue + Edge.leading.rawValue + Edge.trailing.rawValue)
         
         public init(rawValue: Int8) {
             self.rawValue = rawValue
@@ -34,3 +33,8 @@ public enum Edge: Int8, CaseIterable {
     }
 }
 
+extension Edge: Hashable {
+}
+
+extension Edge: RawRepresentable {
+}
