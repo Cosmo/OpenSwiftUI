@@ -8,30 +8,39 @@ public struct Alignment {
         self.horizontal = horizontal
         self.vertical = vertical
     }
+    
     public static var center: Alignment {
         return Alignment(horizontal: HorizontalAlignment.center, vertical: VerticalAlignment.center)
     }
+    
     public static var leading: Alignment {
         return Alignment(horizontal: HorizontalAlignment.leading, vertical: VerticalAlignment.center)
     }
+    
     public static var trailing: Alignment {
         return Alignment(horizontal: HorizontalAlignment.trailing, vertical: VerticalAlignment.center)
     }
+    
     public static var top: Alignment {
         return Alignment(horizontal: HorizontalAlignment.center, vertical: VerticalAlignment.top)
     }
+    
     public static var bottom: Alignment {
         return Alignment(horizontal: HorizontalAlignment.center, vertical: VerticalAlignment.bottom)
     }
+    
     public static var topLeading: Alignment {
         return Alignment(horizontal: HorizontalAlignment.leading, vertical: VerticalAlignment.top)
     }
+    
     public static var topTrailing: Alignment {
         return Alignment(horizontal: HorizontalAlignment.trailing, vertical: VerticalAlignment.top)
     }
+    
     public static var bottomLeading: Alignment {
         return Alignment(horizontal: HorizontalAlignment.leading, vertical: VerticalAlignment.bottom)
     }
+    
     public static var bottomTrailing: Alignment {
         return Alignment(horizontal: HorizontalAlignment.trailing, vertical: VerticalAlignment.bottom)
     }
