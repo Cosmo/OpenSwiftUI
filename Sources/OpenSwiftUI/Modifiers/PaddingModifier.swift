@@ -14,13 +14,13 @@ extension View {
     }
 }
 
-struct PaddingModifier: ViewModifier {
+public struct PaddingModifier: ViewModifier {
     static let defaultPadding: CGFloat = 8
     
-    typealias Body = Never
-    typealias Content = View
+    public typealias Body = Never
+    public typealias Content = View
     
-    var value: EdgeInsets
+    public var value: EdgeInsets
     
     init(_ insets: EdgeInsets) {
         self.value = insets
