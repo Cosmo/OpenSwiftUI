@@ -19,7 +19,7 @@ public struct Font: Hashable {
 public struct Text: View, Equatable {
     public typealias Body = Never
     public var _content: String
-    public var _font = Font(size: 8)
+    public var _font = Font(size: 12)
     public var _color = Color.black
     
     public init(verbatim content: String) {
