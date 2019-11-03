@@ -10,11 +10,23 @@ The project is in early development.
 
 ## Platforms Implementations
 
-* Embedded / Low-Level Devices: https://github.com/Cosmo/SwiftUIEmbedded
+### Embedded / Low-Level Devices
+
+Project Page:
+https://github.com/Cosmo/SwiftUIEmbedded
+
+Demo:
+https://github.com/Cosmo/SwiftUIEmbedded-Demo
 
 
 
 ---
+
+## Contact
+
+* Devran "Cosmo" Uenal
+* Twitter: [@maccosmo](http://twitter.com/maccosmo)
+* LinkedIn: [devranuenal](https://www.linkedin.com/in/devranuenal)
 
 ## License
 
