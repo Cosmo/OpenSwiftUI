@@ -8,9 +8,11 @@ The rendering of graphical user interfaces can be implemented in platform specif
 
 The project is in early development.
 
-## Implementations for platforms
+## Platforms Implementations
 
 * Embedded / Low-Level Devices: https://github.com/Cosmo/SwiftUIEmbedded
+
+
 
 ---
 
