@@ -6,10 +6,10 @@ public struct Color {
     // private let aColor: Double
     // private let bColor: Double
     
-    private let red: Double
-    private let green: Double
-    private let blue: Double
-    private let opacity: Double
+    public let _red: Double
+    public let _green: Double
+    public let _blue: Double
+    public let _opacity: Double
 }
 
 extension Color: Hashable {
@@ -27,24 +27,24 @@ extension Color {
     }
     
     public init(_ colorSpace: Color.RGBColorSpace = .sRGB, red: Double, green: Double, blue: Double, opacity: Double = 1) {
-        self.red = red
-        self.green = green
-        self.blue = blue
-        self.opacity = opacity
+        self._red = red
+        self._green = green
+        self._blue = blue
+        self._opacity = opacity
     }
     
     public init(_ colorSpace: Color.RGBColorSpace = .sRGB, white: Double, opacity: Double = 1) {
-        self.red = white
-        self.green = white
-        self.blue = white
-        self.opacity = opacity
+        self._red = white
+        self._green = white
+        self._blue = white
+        self._opacity = opacity
     }
     
     public init(hue: Double, saturation: Double, brightness: Double, opacity: Double = 1) {
-        self.red = 0
-        self.green = 0
-        self.blue = 0
-        self.opacity = opacity
+        self._red = 0
+        self._green = 0
+        self._blue = 0
+        self._opacity = opacity
     }
 }
 
