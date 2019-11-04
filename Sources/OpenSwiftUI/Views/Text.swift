@@ -16,22 +16,46 @@ public struct Font: Hashable {
     }
 }
 
+public class AnyTextStorage<Storage: StringProtocol> {
+    public var storage: Storage
+    
+    internal init(storage: Storage) {
+        self.storage = storage
+    }
+}
+
 public struct Text: View, Equatable {
     public typealias Body = Never
-    public var _content: String
+    public var _storage: Storage
     public var _font = Font(size: 12)
     public var _color = Color.black
     
+    public enum Storage: Equatable {
+        public static func == (lhs: Text.Storage, rhs: Text.Storage) -> Bool {
+            switch (lhs, rhs) {
+            case (.verbatim(let contentA), .verbatim(let contentB)):
+                return contentA == contentB
+            case (.anyTextStorage(let contentA), .anyTextStorage(let contentB)):
+                return contentA.storage == contentB.storage
+            default:
+                return false
+            }
+        }
+        
+        case verbatim(String)
+        case anyTextStorage(AnyTextStorage<String>)
+    }
+    
     public init(verbatim content: String) {
-        self._content = content
+        self._storage = .verbatim(content)
     }
     
     public init<S>(_ content: S) where S: StringProtocol {
-        self._content = String(content)
+        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: content as? String ?? "AnyStorage, FIXME"))
     }
     
     private init(verbatim content: String, font: Font? = nil, foregroundColor: Color? = nil) {
-        self._content = content
+        self._storage = .verbatim(content)
         if let font = font {
             self._font = font
         }
@@ -41,17 +65,27 @@ public struct Text: View, Equatable {
     }
     
     public static func == (lhs: Text, rhs: Text) -> Bool {
-        return lhs._content == rhs._content && lhs._font == rhs._font
+        return lhs._storage == rhs._storage && lhs._font == rhs._font
     }
 }
 
 extension Text {
     public func foregroundColor(_ color: Color?) -> Text {
-        Text(verbatim: _content, font: _font, foregroundColor: color)
+        switch _storage {
+        case .verbatim(let content):
+            return Text(verbatim: content, font: _font, foregroundColor: color)
+        case .anyTextStorage(let content):
+            return Text(verbatim: content.storage, font: _font, foregroundColor: color)
+        }
     }
     
     public func font(_ font: Font?) -> Text {
-        Text(verbatim: _content, font: font, foregroundColor: _color)
+        switch _storage {
+        case .verbatim(let content):
+            return Text(verbatim: content, font: font, foregroundColor: _color)
+        case .anyTextStorage(let content):
+            return Text(verbatim: content.storage, font: font, foregroundColor: _color)
+        }
     }
 }
 
