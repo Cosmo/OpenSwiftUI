@@ -1,18 +1,14 @@
 public struct _ConditionalContent<TrueContent, FalseContent>: View where TrueContent: View, FalseContent: View {
     public enum Storage {
-        case first(TrueContent)
-        case second(FalseContent)
+        case trueContent(TrueContent)
+        case falseContent(FalseContent)
     }
     
     public typealias Body = Never
     public let _storage: Storage
     
-    init(first: TrueContent) {
-        _storage = .first(first)
-    }
-    
-    init(second: FalseContent) {
-        _storage = .second(second)
+    init(storage: Storage) {
+        _storage = storage
     }
 }
 
