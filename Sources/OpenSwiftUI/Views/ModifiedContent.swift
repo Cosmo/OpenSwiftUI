@@ -19,6 +19,6 @@ extension ModifiedContent: ViewModifier where Content: ViewModifier, Modifier: V
 
 extension View {
     public func modifier<T>(_ modifier: T) -> ModifiedContent<Self, T> {
-        return ModifiedContent(content: self, modifier: modifier)
+        return .init(content: self, modifier: modifier)
     }
 }

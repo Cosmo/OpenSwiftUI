@@ -12,6 +12,6 @@ extension ViewModifier where Self.Body == Never {
 
 extension ViewModifier {
     public func concat<T>(_ modifier: T) -> ModifiedContent<Self, T> {
-        return ModifiedContent(content: self, modifier: modifier)
+        return .init(content: self, modifier: modifier)
     }
 }
