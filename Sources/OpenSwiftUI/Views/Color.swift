@@ -61,12 +61,3 @@ extension View {
         return self
     }
 }
-
-extension View {
-    public func background<Background>(_ background: Background, alignment: Alignment = .center) -> some View where Background: View {
-        return ZStack {
-            background
-            self
-        }
-    }
-}
