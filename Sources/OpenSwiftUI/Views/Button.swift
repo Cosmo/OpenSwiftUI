@@ -1,5 +1,3 @@
-import Foundation
-
 public struct Button<Label: View>: View {
     public typealias Body = Label
     

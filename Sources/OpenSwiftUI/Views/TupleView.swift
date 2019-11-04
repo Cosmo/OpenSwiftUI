@@ -1,5 +1,3 @@
-import Foundation
-
 public struct TupleView<T>: View {
     public var value: T
     public typealias Body = Never

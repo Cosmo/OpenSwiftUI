@@ -1,5 +1,3 @@
-import Foundation
-
 public enum Edge: Int8, CaseIterable {
     public typealias RawValue = Int8
     

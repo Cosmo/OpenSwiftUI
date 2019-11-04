@@ -1,5 +1,3 @@
-import Foundation
-
 public struct ImageData: Equatable {
     public var bytes: [UInt8]
     public var size: Size

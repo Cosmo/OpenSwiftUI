@@ -1,5 +1,3 @@
-import Foundation
-
 public struct ModifiedContent<Content, Modifier> {
     public var content: Content
     public var modifier: Modifier
@@ -12,9 +10,7 @@ public struct ModifiedContent<Content, Modifier> {
 extension ModifiedContent: View where Content: View, Modifier: ViewModifier {
     public typealias Body = Never
     public var body: ModifiedContent<Content, Modifier>.Body {
-        get {
-            fatalError("##################")
-        }
+        fatalError()
     }
 }
 

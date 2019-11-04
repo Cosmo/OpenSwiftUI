@@ -1,25 +1,15 @@
-import Foundation
-
-public struct Color {
-    // TODO: Could make sense to use CIELAB Color Space instead of RGB
-    // private let lightness: Double
-    // private let aColor: Double
-    // private let bColor: Double
+public struct Color: View, Hashable {
+    public typealias Body = Never
     
+    // TODO: Use CIELAB Color Space instead of RGB
+    // These values should be private,
+    // but then they are not accessible
+    // in implementations of OpenSwiftUI
     public let _red: Double
     public let _green: Double
     public let _blue: Double
     public let _opacity: Double
-}
-
-extension Color: Hashable {
-}
-
-extension Color {
-    public typealias Body = Never
-}
-
-extension Color {
+    
     public enum RGBColorSpace {
         case sRGB
         case sRGBLinear
@@ -41,14 +31,16 @@ extension Color {
     }
     
     public init(hue: Double, saturation: Double, brightness: Double, opacity: Double = 1) {
-        self._red = 0
-        self._green = 0
-        self._blue = 0
-        self._opacity = opacity
+        // TODO: Implement HSBA to RGBA conversion.
+        fatalError("Not implemented")
+    }
+    
+    public var body: Never {
+        fatalError()
     }
 }
 
-extension Color: View {
+extension Color {
     public static let clear: Color = Color(hue: 0, saturation: 0, brightness: 0, opacity: 0)
     public static let black: Color = Color(red: 0, green: 0, blue: 0)
     public static let white: Color = Color(red: 1, green: 1, blue: 1)
@@ -62,12 +54,6 @@ extension Color: View {
     public static let purple: Color = Color(red: 0.5, green: 0, blue: 1)
     public static let primary: Color = Color(red: 1, green: 1, blue: 1)
     public static let secondary: Color = Color(red: 0.8, green: 0.8, blue: 0.8)
-}
-
-extension Color {
-    public var body: Never {
-        fatalError()
-    }
 }
 
 extension View {

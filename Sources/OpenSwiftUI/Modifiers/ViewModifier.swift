@@ -1,5 +1,3 @@
-import Foundation
-
 public protocol ViewModifier {
     associatedtype Body: View
     associatedtype Content
@@ -8,7 +6,7 @@ public protocol ViewModifier {
 
 extension ViewModifier where Self.Body == Never {
     public func body(content: Self.Content) -> Self.Body {
-        fatalError("ViewModifier:body")
+        fatalError()
     }
 }
 
