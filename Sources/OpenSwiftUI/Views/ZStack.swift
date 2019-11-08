@@ -2,17 +2,22 @@ import Foundation
 
 public struct ZStack<Content>: View where Content: View {
     public typealias Body = Never
-    public let _content: Content
-    public let _alignment: Alignment
+    public var _tree: _VariadicView.Tree<_ZStackLayout, Content>
     
     public init(alignment: Alignment = .center, @ViewBuilder content: () -> Content) {
-        self._alignment = alignment
-        self._content = content()
+        _tree = .init(
+            root: _ZStackLayout(alignment: alignment), content: content())
     }
 }
 
 extension ZStack {
     public var body: Never {
+        fatalError()
+    }
+}
+
+extension ZStack {
+    public static func _makeView(view: _GraphValue<ZStack<Content>>, inputs: _ViewInputs) -> _ViewOutputs {
         fatalError()
     }
 }

@@ -12,3 +12,13 @@ extension TupleView {
         fatalError()
     }
 }
+
+extension TupleView {
+    public static func _makeView(view: _GraphValue<TupleView<T>>, inputs: _ViewInputs) -> _ViewOutputs {
+        fatalError()
+    }
+    
+    public static func _makeViewList(view: _GraphValue<TupleView<T>>, inputs: _ViewListInputs) -> _ViewListOutputs {
+        fatalError()
+    }
+}

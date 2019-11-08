@@ -1,10 +1,10 @@
-public struct Button<Label: View>: View {
+public struct Button<Label>: View where Label: View {
     public typealias Body = Label
     
     public let _label: Label
     public let _action: () -> Void
     
-    public var body: Self.Body {
+    public var body: Label {
         return _label
     }
     

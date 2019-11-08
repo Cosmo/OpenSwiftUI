@@ -94,3 +94,9 @@ extension Text {
         fatalError()
     }
 }
+
+extension Text {
+    public static func _makeView(view: _GraphValue<Text>, inputs: _ViewInputs) -> _ViewOutputs {
+        fatalError()
+    }
+}
