@@ -1,7 +1,6 @@
-public struct Color: View, Hashable {
+public struct Color: View, Hashable, CustomStringConvertible {
     public typealias Body = Never
     
-    // TODO: Use CIELAB Color Space instead of RGB
     // These values should be private,
     // but then they are not accessible
     // in implementations of OpenSwiftUI
@@ -10,7 +9,7 @@ public struct Color: View, Hashable {
     public let _blue: Double
     public let _opacity: Double
     
-    public enum RGBColorSpace {
+    public enum RGBColorSpace: Equatable {
         case sRGB
         case sRGBLinear
         case displayP3
@@ -37,6 +36,10 @@ public struct Color: View, Hashable {
     
     public var body: Never {
         fatalError()
+    }
+    
+    public var description: String {
+        return "Red: \(_red), Green: \(_green), Blue: \(_blue)"
     }
 }
 
