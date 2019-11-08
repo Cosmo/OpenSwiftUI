@@ -1,6 +1,11 @@
+public struct _ViewModifier_Content<Modifier> where Modifier: ViewModifier {
+    public typealias Body = Never
+}
+
 public protocol ViewModifier {
     associatedtype Body: View
-    associatedtype Content
+    // associatedtype Content
+    typealias Content = _ViewModifier_Content<Self>
     func body(content: Self.Content) -> Self.Body
 }
 

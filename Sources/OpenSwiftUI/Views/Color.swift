@@ -61,6 +61,17 @@ extension Color {
 
 extension View {
     public func foregroundColor(_ color: Color?) -> some View {
-        return self
+        return environment(\.foregroundColor, color)
+    }
+}
+
+enum ForegroundColorEnvironmentKey: EnvironmentKey {
+    static var defaultValue: Color? { return nil }
+}
+
+extension EnvironmentValues {
+    public var foregroundColor: Color? {
+        set { self[ForegroundColorEnvironmentKey.self] = newValue }
+        get { self[ForegroundColorEnvironmentKey.self] }
     }
 }
