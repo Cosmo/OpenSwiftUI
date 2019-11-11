@@ -2,8 +2,8 @@ public struct _BackgroundModifier<Background>: ViewModifier where Background: Vi
     public typealias Body = Never
     public typealias Content = View
     
-    let background: Background
-    let alignment: Alignment
+    public let background: Background
+    public let alignment: Alignment
     
     init(background: Background, alignment: Alignment) {
         self.background = background
