@@ -1,21 +1,5 @@
 import Foundation
 
-public struct Font: Hashable {
-    public var size: CGFloat
-    
-    internal init(size: CGFloat) {
-        self.size = size
-    }
-    
-    public static func system(size: CGFloat) -> Font {
-        return Font(size: size)
-    }
-    
-    public static func == (lhs: Font, rhs: Font) -> Bool {
-        return lhs.size == rhs.size
-    }
-}
-
 public class AnyTextStorage<Storage: StringProtocol> {
     public var storage: Storage
     
@@ -24,11 +8,15 @@ public class AnyTextStorage<Storage: StringProtocol> {
     }
 }
 
+public class AnyTextModifier {
+    init() {
+    }
+}
+
 public struct Text: View, Equatable {
     public typealias Body = Never
     public var _storage: Storage
-    public var _font = Font(size: 12)
-    public var _color = Color.black
+    public var _modifiers: [Text.Modifier] = [Modifier]()
     
     public enum Storage: Equatable {
         public static func == (lhs: Text.Storage, rhs: Text.Storage) -> Bool {
@@ -46,6 +34,28 @@ public struct Text: View, Equatable {
         case anyTextStorage(AnyTextStorage<String>)
     }
     
+    public enum Modifier: Equatable {
+        case color(Color?)
+        case font(Font?)
+        // case italic
+        // case weight(Font.Weight?)
+        // case kerning(CoreGraphics.CGFloat)
+        // case tracking(CoreGraphics.CGFloat)
+        // case baseline(CoreGraphics.CGFloat)
+        // case rounded
+        // case anyTextModifier(AnyTextModifier)
+        public static func == (lhs: Text.Modifier, rhs: Text.Modifier) -> Bool {
+            switch (lhs, rhs) {
+            case (.color(let colorA), .color(let colorB)):
+                return colorA == colorB
+            case (.font(let fontA), .font(let fontB)):
+                return fontA == fontB
+            default:
+                return false
+            }
+        }
+    }
+    
     public init(verbatim content: String) {
         self._storage = .verbatim(content)
     }
@@ -54,37 +64,32 @@ public struct Text: View, Equatable {
         self._storage = .anyTextStorage(AnyTextStorage<String>(storage: content as? String ?? "AnyStorage, FIXME"))
     }
     
-    private init(verbatim content: String, font: Font? = nil, foregroundColor: Color? = nil) {
+    private init(verbatim content: String, modifiers: [Modifier] = []) {
         self._storage = .verbatim(content)
-        if let font = font {
-            self._font = font
-        }
-        if let foregroundColor = foregroundColor {
-            self._color = foregroundColor
-        }
+        self._modifiers = modifiers
     }
     
     public static func == (lhs: Text, rhs: Text) -> Bool {
-        return lhs._storage == rhs._storage && lhs._font == rhs._font
+        return lhs._storage == rhs._storage && lhs._modifiers == rhs._modifiers
     }
 }
 
 extension Text {
     public func foregroundColor(_ color: Color?) -> Text {
-        switch _storage {
-        case .verbatim(let content):
-            return Text(verbatim: content, font: _font, foregroundColor: color)
-        case .anyTextStorage(let content):
-            return Text(verbatim: content.storage, font: _font, foregroundColor: color)
-        }
+        textWithModifier(Text.Modifier.color(color))
     }
     
     public func font(_ font: Font?) -> Text {
+        textWithModifier(Text.Modifier.font(font))
+    }
+    
+    private func textWithModifier(_ modifier: Modifier) -> Text {
+        let modifiers = _modifiers + [modifier]
         switch _storage {
         case .verbatim(let content):
-            return Text(verbatim: content, font: font, foregroundColor: _color)
+            return Text(verbatim: content, modifiers: modifiers)
         case .anyTextStorage(let content):
-            return Text(verbatim: content.storage, font: font, foregroundColor: _color)
+            return Text(verbatim: content.storage, modifiers: modifiers)
         }
     }
 }
