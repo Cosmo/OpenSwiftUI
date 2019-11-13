@@ -75,3 +75,28 @@ extension EnvironmentValues {
         get { self[ForegroundColorEnvironmentKey.self] }
     }
 }
+
+
+
+
+public enum ColorScheme: CaseIterable {
+    case light
+    case dark
+}
+
+extension View {
+    public func colorScheme(_ colorScheme: ColorScheme) -> some View {
+        return environment(\.colorScheme, colorScheme)
+    }
+}
+
+enum ColorSchemeEnvironmentKey: EnvironmentKey {
+    static var defaultValue: ColorScheme { return ColorScheme.dark }
+}
+
+extension EnvironmentValues {
+    public var colorScheme: ColorScheme {
+        set { self[ColorSchemeEnvironmentKey.self] = newValue }
+        get { self[ColorSchemeEnvironmentKey.self] }
+    }
+}
