@@ -14,9 +14,12 @@ public struct EdgeInsets: Equatable {
     }
     
     public init() {
-        self.top = 0
-        self.leading = 0
-        self.bottom = 0
-        self.trailing = 0
+        self.init(top: 0, leading: 0, bottom: 0, trailing: 0)
+    }
+}
+
+extension EdgeInsets {
+    internal init(_all: CGFloat) {
+        self.init(top: _all, leading: _all, bottom: _all, trailing: _all)
     }
 }

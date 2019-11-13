@@ -1,7 +1,6 @@
-public struct Color: View, Hashable {
+public struct Color: View, Hashable, CustomStringConvertible {
     public typealias Body = Never
     
-    // TODO: Use CIELAB Color Space instead of RGB
     // These values should be private,
     // but then they are not accessible
     // in implementations of OpenSwiftUI
@@ -10,7 +9,7 @@ public struct Color: View, Hashable {
     public let _blue: Double
     public let _opacity: Double
     
-    public enum RGBColorSpace {
+    public enum RGBColorSpace: Equatable {
         case sRGB
         case sRGBLinear
         case displayP3
@@ -38,6 +37,10 @@ public struct Color: View, Hashable {
     public var body: Never {
         fatalError()
     }
+    
+    public var description: String {
+        return "Red: \(_red), Green: \(_green), Blue: \(_blue)"
+    }
 }
 
 extension Color {
@@ -58,6 +61,42 @@ extension Color {
 
 extension View {
     public func foregroundColor(_ color: Color?) -> some View {
-        return self
+        return environment(\.foregroundColor, color)
+    }
+}
+
+enum ForegroundColorEnvironmentKey: EnvironmentKey {
+    static var defaultValue: Color? { return nil }
+}
+
+extension EnvironmentValues {
+    public var foregroundColor: Color? {
+        set { self[ForegroundColorEnvironmentKey.self] = newValue }
+        get { self[ForegroundColorEnvironmentKey.self] }
+    }
+}
+
+
+
+
+public enum ColorScheme: CaseIterable {
+    case light
+    case dark
+}
+
+extension View {
+    public func colorScheme(_ colorScheme: ColorScheme) -> some View {
+        return environment(\.colorScheme, colorScheme)
+    }
+}
+
+enum ColorSchemeEnvironmentKey: EnvironmentKey {
+    static var defaultValue: ColorScheme { return ColorScheme.dark }
+}
+
+extension EnvironmentValues {
+    public var colorScheme: ColorScheme {
+        set { self[ColorSchemeEnvironmentKey.self] = newValue }
+        get { self[ColorSchemeEnvironmentKey.self] }
     }
 }

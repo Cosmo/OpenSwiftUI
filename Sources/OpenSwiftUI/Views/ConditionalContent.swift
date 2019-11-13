@@ -17,3 +17,12 @@ extension _ConditionalContent {
         fatalError()
     }
 }
+
+extension _ConditionalContent {
+    public static func _makeView(view: _GraphValue<_ConditionalContent<TrueContent, FalseContent>>, inputs: _ViewInputs) -> _ViewOutputs {
+        fatalError()
+    }
+    public static func _makeViewList(view: _GraphValue<_ConditionalContent<TrueContent, FalseContent>>, inputs: _ViewListInputs) -> _ViewListOutputs {
+        fatalError()
+    }
+}
