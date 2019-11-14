@@ -6,6 +6,12 @@ public struct _Graph {
     }
 }
 
+public struct _GraphInputs {
+    public init() {
+        
+    }
+}
+
 public struct _ViewInputs {
     public init() {
         
@@ -31,8 +37,10 @@ public struct _ViewListOutputs {
 }
 
 public struct _GraphValue<Value>: Equatable {
-    public init() {
-        
+    var value: Value
+    
+    public init(value: Value) {
+        self.value = value
     }
     
     public subscript<U>(keyPath: KeyPath<Value, U>) -> _GraphValue<U> {
