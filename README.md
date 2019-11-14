@@ -24,7 +24,7 @@ Another way is to use reflection (`Mirror(reflecting: …)`) to peek into SwiftU
 
 ### Good to know
 
-Methods and properties that are marked as private in SwiftUI should be prefixed by an `_` (underscore) but marked as public in OpenSwiftUI.
+Methods and properties of SwiftUI that are marked as private, should be prefixed by an `_` (underscore) and marked as public in OpenSwiftUI.
 This is neccessary because another project of a GUI implementation might need access.
 
 
