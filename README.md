@@ -12,11 +12,18 @@ The actual rendering of UI elements can then be implemented by other projects fo
 
 This project is in early development.
 
+## Background
+
+SwiftUI was introduced by Apple at WWDC 19. Since then, developing applications with graphical user interfaces became easier to read, write and maintain. Unfortunately, the principle "Learn once, apply anywhere" works on Apple platforms, only.
+
+Swift runs on Apple platforms, the web, Linux, Windows and even on embedded devices.
+Wouldn't it be great if you could write GUI based applications with SwiftUI on platforms that run Swift?
+
 ## Contributing
 
 Xcode 11.2 or higher is required.
 
-It might not be the easiest part to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
+It might not be the easiest thing to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
 A good start is to get familar with the SwiftUI interface (see below). This will give you an idea of everything that is available to the user.
 
 Another way is to use reflection (`Mirror(reflecting: …)`) to peek into SwiftUI types and instances.
@@ -24,7 +31,7 @@ Another way is to use reflection (`Mirror(reflecting: …)`) to peek into SwiftU
 
 ### Good to know
 
-Methods and properties that are marked as private in SwiftUI should be prefixed by an `_` (underscore) but marked as public in OpenSwiftUI.
+Methods and properties of SwiftUI that are marked as private, should be prefixed by an `_` (underscore) and marked as public in OpenSwiftUI.
 This is neccessary because another project of a GUI implementation might need access.
 
 
@@ -69,7 +76,7 @@ You can also have a look at this [gist](https://gist.github.com/Cosmo/deeece2ac8
 
 ## Special thanks
 
-I'd like to give special thanks to [Helge Heß](https://github.com/helje5). He created [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI) and contibuted many suggestions to OpenSwiftUI and helped with insights of his findings.
+I'd like to give special thanks to [Helge Heß](https://github.com/helje5). He created [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI), contibuted many suggestions to OpenSwiftUI and helped with insights of his findings.
 
 
 ---
