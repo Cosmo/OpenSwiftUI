@@ -16,7 +16,6 @@ This project is in early development.
 
 Xcode 11.2 or higher is required.
 
-It might not be the easiest part to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
 It might not be the easiest thing to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
 A good start is to get familar with the SwiftUI interface (see below). This will give you an idea of everything that is available to the user.
 
