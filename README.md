@@ -17,6 +17,7 @@ This project is in early development.
 Xcode 11.2 or higher is required.
 
 It might not be the easiest part to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
+It might not be the easiest thing to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
 A good start is to get familar with the SwiftUI interface (see below). This will give you an idea of everything that is available to the user.
 
 Another way is to use reflection (`Mirror(reflecting: …)`) to peek into SwiftUI types and instances.
@@ -69,7 +70,7 @@ You can also have a look at this [gist](https://gist.github.com/Cosmo/deeece2ac8
 
 ## Special thanks
 
-I'd like to give special thanks to [Helge Heß](https://github.com/helje5). He created [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI) and contibuted many suggestions to OpenSwiftUI and helped with insights of his findings.
+I'd like to give special thanks to [Helge Heß](https://github.com/helje5). He created [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI), contibuted many suggestions to OpenSwiftUI and helped with insights of his findings.
 
 
 ---
