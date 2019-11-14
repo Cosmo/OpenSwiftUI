@@ -12,6 +12,13 @@ The actual rendering of UI elements can then be implemented by other projects fo
 
 This project is in early development.
 
+## Background
+
+SwiftUI was introduced by Apple at WWDC 19. Since then, developing applications with graphical user interfaces became easier to read, write and maintain. Unfortunately, the principle "Learn once, apply anywhere" works on Apple platforms, only.
+
+Swift runs on Apple platforms, the web, Linux, Windows and even on embedded devices.
+Wouldn't it be great if you could write GUI based applications with SwiftUI on platforms that run Swift?
+
 ## Contributing
 
 Xcode 11.2 or higher is required.
