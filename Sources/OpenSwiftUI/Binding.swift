@@ -4,26 +4,28 @@ import Foundation
     public var transaction: Transaction
     internal var location: AnyLocation<Value>
     fileprivate var _value: Value
+    
     public init(get: @escaping () -> Value, set: @escaping (Value) -> Void) {
         fatalError()
     }
+    
     public init(get: @escaping () -> Value, set: @escaping (Value, Transaction) -> Void) {
         fatalError()
     }
+    
     public static func constant(_ value: Value) -> Binding<Value> {
         fatalError()
     }
+    
     public var wrappedValue: Value {
-        get {
-            fatalError()
-        }
-        nonmutating set {
-            fatalError()
-        }
+        get { return location._value.pointee }
+        nonmutating set { location._value.pointee = newValue }
     }
+    
     public var projectedValue: Binding<Value> {
         fatalError()
     }
+    
     public subscript<Subject>(dynamicMember keyPath: WritableKeyPath<Value, Subject>) -> Binding<Subject> {
         fatalError()
     }
