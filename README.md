@@ -91,7 +91,7 @@ You can also have a look at this [gist](https://gist.github.com/Cosmo/deeece2ac8
 
 | Status | Name | Notes |
 | --- | --- | --- |
-| ✅ | [`struct Text`](https://github.com/Cosmo/OpenSwiftUI/blob/master/Sources/OpenSwiftUI/Views/Text.swift) | |
+| ✅ | `struct Text` | |
 | ❌ | `struct TextField` | |
 | ❌ | `struct SecureField` | |
 | ✅ | `struct Font` | |
