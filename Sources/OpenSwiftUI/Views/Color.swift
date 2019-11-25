@@ -120,7 +120,7 @@ public struct Color: View, Hashable, CustomStringConvertible {
         self.provider = _Resolved(linearRed: rgb.red, linearGreen: rgb.green, linearBlue: rgb.blue, opacity: opacity)
     }
     
-    internal init(_ systemColor: SystemColorType.SystemColor) {
+    fileprivate init(_ systemColor: SystemColorType.SystemColor) {
         self.provider = SystemColorType(value: systemColor)
     }
     
