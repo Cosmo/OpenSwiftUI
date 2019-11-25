@@ -4,7 +4,7 @@ OpenSwiftUI is an OpenSource implementation of Apple's [SwiftUI](https://develop
 
 The project's goal is to stay close to the original API as possible.
 
-The actual rendering of UI elements can then be implemented by other projects for different platforms like Linux, Windows, Embedded, etc.
+Other projects can then implement the actual rendering of UI elements for different platforms like Linux, Windows, Embedded, and many more.
 
 [SwiftUIEmbedded](https://github.com/Cosmo/SwiftUIEmbedded) is one of the first projects that make use of OpenSwiftUI ([Demo](https://github.com/Cosmo/SwiftUIEmbedded-Demo)).
 
@@ -14,33 +14,33 @@ This project is in early development.
 
 ## Background
 
-SwiftUI was introduced by Apple at WWDC 19. Since then, developing applications with graphical user interfaces became easier to read, write and maintain. Unfortunately, the principle "Learn once, apply anywhere" works on Apple platforms, only.
+Apple introduced SwiftUI at WWDC 19. Since then, developing applications with graphical user interfaces became more comfortable to read, write, and maintain. Unfortunately, the principle "Learn once, apply anywhere" works on Apple platforms, only.
 
-Swift runs on Apple platforms, the web, Linux, Windows and even on embedded devices.
+Swift runs on Apple platforms, the web, Linux, Windows, and even on embedded devices.
 Wouldn't it be great if you could write GUI based applications with SwiftUI on platforms that run Swift?
 
 ## Contributing
 
 Xcode 11.2 or higher is required.
 
-It might not be the easiest thing to figure out how SwiftUI works internally but over time and collective guesswork, it can be done.
-A good start is to get familar with the SwiftUI interface (see below). This will give you an idea of everything that is available to the user.
+Over time and collective guesswork, it should be possible to re-create the SwiftUI API.
 
-Another way is to use reflection (`Mirror(reflecting: …)`) to peek into SwiftUI types and instances.
+A good starting point is to get familiar with the [SwiftUI interface](#swiftui-interface), focus on certain functionality, and try to re-implement it.
 
+A helpful tool is to use reflection (`Mirror(reflecting: …)`) to peek into SwiftUI types and instances. This reveals the internal structure of instances (properties, types, names and inheritance).
 
 ### Good to know
 
-Methods and properties of SwiftUI that are marked as private, should be prefixed by an `_` (underscore) and marked as public in OpenSwiftUI.
-This is neccessary because another project of a GUI implementation might need access.
+Private methods and properties of SwiftUI should be prefixed by an `_` (underscore) and marked as public in OpenSwiftUI.
+Doing this is necessary because another project of a GUI implementation might need access.
 
 
 ## Resources
 
 ### SwiftUI Interface
 
-Compared to what you can see in Xcode, the file below shows you more than just the public interfaces.
-Private properties and even the body of properties, functions and initializers that are marked as `@inlinable` is visible in plain text.  
+Compared to what you can see in Xcode, this [gist]((https://gist.github.com/Cosmo/b4cd7d4c81bf09c5801459b591a322f9)) shows you more than just the public interfaces.
+It shows private properties, and the body of `@inlinable` marked properties, functions, and initializers.
 
 ```
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/SwiftUI.framework/Versions/A/Modules/SwiftUI.swiftmodule/x86_64.swiftinterface
@@ -49,7 +49,7 @@ Private properties and even the body of properties, functions and initializers t
 ### SwiftWebUI
 
 [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI) is an implementation of SwiftUI for the web by [Helge Heß](https://github.com/helje5).
-This project's goal is focused exclusivly on the web. 
+This project's goal is focused exclusively on the web. 
 It deviates a little bit from SwiftUI by taking some shortcuts here and there -- but looks quite complete in functionality and is great for inspiration.  
 
 
@@ -76,7 +76,7 @@ You can also have a look at this [gist](https://gist.github.com/Cosmo/deeece2ac8
 
 ## Special thanks
 
-I'd like to give special thanks to [Helge Heß](https://github.com/helje5). He created [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI), contibuted many suggestions to OpenSwiftUI and helped with insights of his findings.
+I want to give special thanks to [Helge Heß](https://github.com/helje5). He created [SwiftWebUI](https://github.com/SwiftWebUI/SwiftWebUI), contributed many suggestions to OpenSwiftUI, and helped with insights of his findings.
 
 
 ---
