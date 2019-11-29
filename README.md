@@ -111,7 +111,7 @@ Xcode 11.2 or higher is required.
 | --- | --- | --- |
 | ❌ | `struct List` | |
 | ❌ | `protocol DynamicViewContent` | |
-| ❌ | `protocol Identifiable` | |
+| ✅ | `protocol Identifiable` | Provided by Swift. |
 | ✅ | `struct ForEach` | |
 | ❌ | `struct ScrollView` | |
 | ⚠️ | `enum Axis` | |
@@ -159,7 +159,7 @@ Xcode 11.2 or higher is required.
 
 | Status | Name | Notes |
 | --- | --- | --- |
-| ⚠️ | `struct AnyView` | |
+| ⚠️ | `struct AnyView` | `init?(_fromValue value: Any)` missing. |
 | ✅ | `struct TupleView` | |
 
 ### Drawing and Animation
