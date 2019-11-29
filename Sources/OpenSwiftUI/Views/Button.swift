@@ -20,3 +20,34 @@ extension Button where Label == Text {
         self._label = Text(title)
     }
 }
+
+
+public protocol ButtonStyle {
+    associatedtype Body: View
+    func makeBody(configuration: Self.Configuration) -> Self.Body
+    typealias Configuration = ButtonStyleConfiguration
+}
+
+public struct ButtonStyleConfiguration {
+    public struct Label: View {
+        public typealias Body = Never
+        public var body: Never {
+            fatalError()
+        }
+        public var _storage: Any
+        
+        init(_ storage: Any) {
+            self._storage = storage
+        }
+    }
+    public let label: Label
+    public let isPressed: Bool
+}
+
+extension View {
+    public func buttonStyle<S>(_ style: S) -> some View where S: ButtonStyle {
+        let label = ButtonStyleConfiguration.Label(self)
+        let configuration = ButtonStyleConfiguration(label: label, isPressed: false)
+        return style.makeBody(configuration: configuration)
+    }
+}
