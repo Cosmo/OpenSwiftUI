@@ -1,20 +1,20 @@
-public class AnyViewStorageBase<V: View>: View {
+public class AnyViewStorageBase {
+    
+}
+
+public class AnyViewStorage<V: View>: AnyViewStorageBase {
     public var _view: V
+    
     init(_ view: V) {
-        _view = view
-    }
-    public var body: V {
-        _view
+        self._view = view
     }
 }
 
 public struct AnyView: View {
-    public var _storage: Any
-    public var _type: Any
+    public var _storage: AnyViewStorageBase
     
     public init<V>(_ view: V) where V: View {
-        _storage = AnyViewStorageBase(view)
-        _type = V.self
+        _storage = AnyViewStorage<V>(view)
     }
     
     public init?(_fromValue value: Any) {
