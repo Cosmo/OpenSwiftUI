@@ -121,7 +121,7 @@ Xcode 11.2 or higher is required.
 | Status | Name | Notes |
 | --- | --- | --- |
 | ❌ | `struct Form` | |
-| ❌ | `struct Group` | |
+| ⚠️ | `struct Group` | |
 | ❌ | `struct GroupBox` | |
 | ❌ | `struct Section` | |
 
