@@ -1,28 +1,42 @@
-public struct Image: View, Equatable {
-    public typealias Body = Never
+import Foundation
+
+public struct Image: Equatable {
+    public var _provider: AnyImageProviderBox
+    public static func == (lhs: Image, rhs: Image) -> Bool {
+        return ObjectIdentifier(lhs._provider) == ObjectIdentifier(rhs._provider)
+    }
     
-    public var _imageData: ImageData
-    
-    public init(imageData: ImageData) {
-        self._imageData = imageData
+    public init(provider: AnyImageProviderBox) {
+        self._provider = provider
     }
 }
 
 extension Image {
+    public typealias Body = Never
+}
+
+open class AnyImageProviderBox {
+    public init() {
+    }
+}
+
+extension Image: View {
     public var body: Never {
         fatalError()
     }
 }
 
-// This actually does not belong in OpenSwiftUI
-// But for now will stay here, until there is
-// a better way to pass image data to Image().
-public struct ImageData: Equatable {
-    public var bytes: [UInt8]
-    public var size: Size
-    
-    public init(bytes: [UInt8], size: Size) {
-        self.bytes = bytes
-        self.size = size
+extension Image {
+    public init(_ name: String, bundle: Foundation.Bundle? = nil) {
+        fatalError()
+    }
+    public init(_ name: String, bundle: Foundation.Bundle? = nil, label: Text) {
+        fatalError()
+    }
+    public init(decorative name: String, bundle: Foundation.Bundle? = nil) {
+        fatalError()
+    }
+    public init(systemName: String) {
+        fatalError()
     }
 }
