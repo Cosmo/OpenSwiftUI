@@ -46,6 +46,17 @@ public struct Alignment {
     }
 }
 
+public protocol AlignmentID {
+    static func defaultValue(in context: ViewDimensions) -> CGFloat
+}
+
+struct AlignmentKey: Hashable, Comparable {
+    private let bits: UInt
+    internal static func < (lhs: AlignmentKey, rhs: AlignmentKey) -> Bool {
+        return lhs.bits < rhs.bits
+    }
+}
+
 // FIXME: This is not the actual implementation. SwiftUI does not use enums. See below
 public enum HorizontalAlignment {
     case leading
@@ -62,20 +73,29 @@ public enum VerticalAlignment {
     case lastTextBaseline
 }
 
-// This is how it should look like:
 /*
-public protocol AlignmentID {
-    static func defaultValue(in context: ViewDimensions) -> CGFloat
+public struct HorizontalAlignment {
+    internal let key: AlignmentKey
+    public init(_ id: AlignmentID.Type) {
+        fatalError()
+    }
+    
+    public static func == (a: HorizontalAlignment, b: HorizontalAlignment) -> Bool {
+        return a.key == b.key
+    }
 }
 
 public struct VerticalAlignment {
+    internal let key: AlignmentKey
     public init(_ id: AlignmentID.Type) {
-        
+        fatalError()
     }
+    
     public static func == (a: VerticalAlignment, b: VerticalAlignment) -> Bool {
-        return true
+        return a.key == b.key
     }
 }
+
 
 extension VerticalAlignment {
     public static var top: VerticalAlignment {
@@ -98,15 +118,6 @@ extension VerticalAlignment {
 extension VerticalAlignment: Equatable {
 }
 
-public struct HorizontalAlignment {
-    public init(_ id: AlignmentID.Type) {
-        
-    }
-    public static func == (a: HorizontalAlignment, b: HorizontalAlignment) -> Bool {
-        return true
-    }
-}
-
 extension HorizontalAlignment {
     public static var leading: HorizontalAlignment {
         fatalError()
@@ -120,43 +131,5 @@ extension HorizontalAlignment {
 }
 
 extension HorizontalAlignment: Equatable {
-}
-
-public struct Alignment: Equatable {
-    public var horizontal: HorizontalAlignment
-    public var vertical: VerticalAlignment
-    public init(horizontal: HorizontalAlignment, vertical: VerticalAlignment) {
-        fatalError()
-    }
-    public static var center: Alignment {
-        fatalError()
-    }
-    public static var leading: Alignment {
-        fatalError()
-    }
-    public static var trailing: Alignment {
-        fatalError()
-    }
-    public static var top: Alignment {
-        fatalError()
-    }
-    public static var bottom: Alignment {
-        fatalError()
-    }
-    public static var topLeading: Alignment {
-        fatalError()
-    }
-    public static var topTrailing: Alignment {
-        fatalError()
-    }
-    public static var bottomLeading: Alignment {
-        fatalError()
-    }
-    public static var bottomTrailing: Alignment {
-        fatalError()
-    }
-    public static func == (a: Alignment, b: Alignment) -> Bool {
-        fatalError()
-    }
 }
 */
