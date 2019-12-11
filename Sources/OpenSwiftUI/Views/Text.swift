@@ -39,9 +39,9 @@ public struct Text: View, Equatable {
         case font(Font?)
         // case italic
         // case weight(Font.Weight?)
-        // case kerning(CoreGraphics.CGFloat)
-        // case tracking(CoreGraphics.CGFloat)
-        // case baseline(CoreGraphics.CGFloat)
+        // case kerning(CGFloat)
+        // case tracking(CGFloat)
+        // case baseline(CGFloat)
         // case rounded
         // case anyTextModifier(AnyTextModifier)
         public static func == (lhs: Text.Modifier, rhs: Text.Modifier) -> Bool {

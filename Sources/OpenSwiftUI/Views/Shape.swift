@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol Shape: Animatable, View {
-    func path(in rect: CoreGraphics.CGRect) -> Path
+    func path(in rect: CGRect) -> Path
 }
 
 extension Shape {
