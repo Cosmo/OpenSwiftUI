@@ -1,5 +1,3 @@
-import Foundation
-
 public struct ZStack<Content>: View where Content: View {
     public typealias Body = Never
     public var _tree: _VariadicView.Tree<_ZStackLayout, Content>

@@ -1,5 +1,3 @@
-import Foundation
-
 internal struct PropertyList: CustomStringConvertible {
     internal var elements: PropertyList.Element?
     init() { elements = nil }

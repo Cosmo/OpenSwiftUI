@@ -1,5 +1,3 @@
-import Foundation
-
 public struct ForEach<Data, ID, Content> where Data: RandomAccessCollection, ID: Hashable {
     public var data: Data
     public var content: (Data.Element) -> Content

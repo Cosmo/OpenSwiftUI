@@ -1,5 +1,3 @@
-import Foundation
-
 @propertyWrapper @dynamicMemberLookup public struct Binding<Value> {
     public var transaction: Transaction
     internal var location: AnyLocation<Value>
