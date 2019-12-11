@@ -61,7 +61,11 @@ public struct Text: View, Equatable {
     }
     
     public init<S>(_ content: S) where S: StringProtocol {
-        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: content as? String ?? "AnyStorage, FIXME"))
+        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: String(content)))
+    }
+    
+    public init(_ key: LocalizedStringKey, tableName: String? = nil, bundle: Bundle? = nil, comment: StaticString? = nil) {
+        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: key.key))
     }
     
     private init(verbatim content: String, modifiers: [Modifier] = []) {
