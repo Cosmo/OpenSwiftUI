@@ -4,11 +4,17 @@
     fileprivate var _value: Value
     
     public init(get: @escaping () -> Value, set: @escaping (Value) -> Void) {
-        fatalError()
+        self.transaction = Transaction()
+        self.location = AnyLocation(value: get())
+        self._value = get()
+        set(_value)
     }
     
     public init(get: @escaping () -> Value, set: @escaping (Value, Transaction) -> Void) {
-        fatalError()
+        self.transaction = Transaction()
+        self.location = AnyLocation(value: get())
+        self._value = get()
+        set(_value, self.transaction)
     }
     
     public static func constant(_ value: Value) -> Binding<Value> {
@@ -21,12 +27,16 @@
     }
     
     public var projectedValue: Binding<Value> {
-        fatalError()
+        self
     }
     
     public subscript<Subject>(dynamicMember keyPath: WritableKeyPath<Value, Subject>) -> Binding<Subject> {
         fatalError()
     }
+}
+
+class StoredLocation<Value>: AnyLocation<Value> {
+    
 }
 
 extension Binding {
@@ -49,9 +59,11 @@ extension Binding {
     public init<V>(_ base: Binding<V>) where Value == V? {
         fatalError()
     }
+    
     public init?(_ base: Binding<Value?>) {
         fatalError()
     }
+    
     public init<V>(_ base: Binding<V>) where Value == AnyHashable, V : Hashable {
         fatalError()
     }
