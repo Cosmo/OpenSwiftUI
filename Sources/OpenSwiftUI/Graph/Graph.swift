@@ -1,5 +1,3 @@
-import Foundation
-
 public struct _Graph {
     public init() {
         
@@ -37,7 +35,7 @@ public struct _ViewListOutputs {
 }
 
 public struct _GraphValue<Value>: Equatable {
-    var value: Value
+    public var value: Value
     
     public init(value: Value) {
         self.value = value

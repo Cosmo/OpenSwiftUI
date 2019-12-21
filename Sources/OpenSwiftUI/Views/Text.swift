@@ -39,9 +39,9 @@ public struct Text: View, Equatable {
         case font(Font?)
         // case italic
         // case weight(Font.Weight?)
-        // case kerning(CoreGraphics.CGFloat)
-        // case tracking(CoreGraphics.CGFloat)
-        // case baseline(CoreGraphics.CGFloat)
+        // case kerning(CGFloat)
+        // case tracking(CGFloat)
+        // case baseline(CGFloat)
         // case rounded
         // case anyTextModifier(AnyTextModifier)
         public static func == (lhs: Text.Modifier, rhs: Text.Modifier) -> Bool {
@@ -61,7 +61,11 @@ public struct Text: View, Equatable {
     }
     
     public init<S>(_ content: S) where S: StringProtocol {
-        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: content as? String ?? "AnyStorage, FIXME"))
+        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: String(content)))
+    }
+    
+    public init(_ key: LocalizedStringKey, tableName: String? = nil, bundle: Bundle? = nil, comment: StaticString? = nil) {
+        self._storage = .anyTextStorage(AnyTextStorage<String>(storage: key.key))
     }
     
     private init(verbatim content: String, modifiers: [Modifier] = []) {

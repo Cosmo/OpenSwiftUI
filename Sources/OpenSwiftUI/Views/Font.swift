@@ -69,12 +69,12 @@ public struct Font: Hashable {
         return Font(provider: provider)
     }
     
-    public static func system(size: CoreGraphics.CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> Font {
+    public static func system(size: CGFloat, weight: Font.Weight = .regular, design: Font.Design = .default) -> Font {
         let provider = SystemProvider(size: size, weight: weight, design: design)
         return Font(provider: provider)
     }
     
-    public static func custom(_ name: String, size: CoreGraphics.CGFloat) -> Font {
+    public static func custom(_ name: String, size: CGFloat) -> Font {
         fatalError()
     }
     

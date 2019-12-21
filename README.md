@@ -82,10 +82,10 @@ Xcode 11.2 or higher is required.
 | Status | Name | Notes |
 | --- | --- | --- |
 | ❌ | `struct Toggle` | |
-| ❌ | `struct Picker` | |
+| ⚠️ | `struct Picker` | |
 | ❌ | `struct DatePicker` | |
 | ❌ | `struct Slider` | |
-| ❌ | `struct Stepper` | |
+| ⚠️ | `struct Stepper` | |
 
 #### Supporting Types
 
@@ -168,7 +168,7 @@ Xcode 11.2 or higher is required.
 
 | Status | Name | Notes |
 | --- | --- | --- |
-| ❌ | `protocol Shape` | |
+| ⚠️ | `protocol Shape` | |
 
 #### Animation
 
@@ -186,7 +186,7 @@ Xcode 11.2 or higher is required.
 
 | Status | Name | Notes |
 | --- | --- | --- |
-| ❌ | `struct Rectangle` | |
+| ⚠️ | `struct Rectangle` | |
 | ✅ | `enum Edge` | |
 | ❌ | `struct RoundedRectangle` | |
 | ⚠️ | `struct Circle` | |

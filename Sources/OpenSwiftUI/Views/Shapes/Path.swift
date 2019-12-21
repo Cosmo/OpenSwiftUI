@@ -104,8 +104,8 @@ public struct Path: Equatable {
     
     public init?(_ string: String) {
         fatalError()
-        let pathBox = PathBox(cgPath: cgPath)
-        self.storage = Storage.path(pathBox)
+        // let pathBox = PathBox(cgPath: cgPath)
+        // self.storage = Storage.path(pathBox)
     }
     
     public var description: String {
@@ -219,6 +219,7 @@ extension Path {
             fatalError()
         }
     }
+    
     public func applying(_ transform: CGAffineTransform) -> Path {
         fatalError()
     }
