@@ -20,9 +20,11 @@ extension Toggle where Label == ToggleStyleConfiguration.Label {
 }
 
 extension Toggle where Label == Text {
+    #if canImport(Foundation)
     public init(_ titleKey: LocalizedStringKey, isOn: Binding<Bool>) {
         fatalError()
     }
+    #endif
     
     public init<S>(_ title: S, isOn: Binding<Bool>) where S: StringProtocol {
         fatalError()

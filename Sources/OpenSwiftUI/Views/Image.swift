@@ -30,6 +30,7 @@ extension Image: View {
     }
 }
 
+#if canImport(Foundation)
 extension Image {
     public init(_ name: String, bundle: Foundation.Bundle? = nil) {
         fatalError()
@@ -44,3 +45,4 @@ extension Image {
         fatalError()
     }
 }
+#endif
