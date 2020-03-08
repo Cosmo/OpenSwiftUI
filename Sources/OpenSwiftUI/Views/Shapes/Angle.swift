@@ -1,4 +1,8 @@
+#if canImport(Foundation)
 import Foundation
+#else
+import CoreGraphicsShim
+#endif
 
 public struct Angle {
     public var radians: Double

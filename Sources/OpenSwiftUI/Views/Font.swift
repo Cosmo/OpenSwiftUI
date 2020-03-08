@@ -1,4 +1,8 @@
+#if canImport(Foundation)
 import Foundation
+#else
+import CoreGraphicsShim
+#endif
 
 extension View {
     public func font(_ font: Font?) -> some View {

@@ -1,4 +1,8 @@
+#if canImport(Foundation)
 import Foundation
+#else
+import CoreGraphicsShim
+#endif
 
 public struct Image: Equatable {
     public var _provider: AnyImageProviderBox
@@ -26,6 +30,7 @@ extension Image: View {
     }
 }
 
+#if canImport(Foundation)
 extension Image {
     public init(_ name: String, bundle: Foundation.Bundle? = nil) {
         fatalError()
@@ -40,3 +45,4 @@ extension Image {
         fatalError()
     }
 }
+#endif

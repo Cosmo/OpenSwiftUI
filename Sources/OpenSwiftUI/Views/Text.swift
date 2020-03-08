@@ -1,4 +1,8 @@
+#if canImport(Foundation)
 import Foundation
+#else
+import CoreGraphicsShim
+#endif
 
 public class AnyTextStorage<Storage: StringProtocol> {
     public var storage: Storage
@@ -64,9 +68,11 @@ public struct Text: View, Equatable {
         self._storage = .anyTextStorage(AnyTextStorage<String>(storage: String(content)))
     }
     
+    #if canImport(Foundation)
     public init(_ key: LocalizedStringKey, tableName: String? = nil, bundle: Bundle? = nil, comment: StaticString? = nil) {
         self._storage = .anyTextStorage(AnyTextStorage<String>(storage: key.key))
     }
+    #endif
     
     private init(verbatim content: String, modifiers: [Modifier] = []) {
         self._storage = .verbatim(content)
