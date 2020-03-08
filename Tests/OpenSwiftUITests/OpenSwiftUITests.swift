@@ -3,12 +3,12 @@ import XCTest
 
 final class OpenSwiftUITests: XCTestCase {
     func testExample() {
-        let body = VStack {
+        let _ = VStack {
             Text("Hello")
             Text("World")
         }
         
-        let body = HStack {
+        let _ = HStack {
             if true {
                 Text("Hello")
             }
