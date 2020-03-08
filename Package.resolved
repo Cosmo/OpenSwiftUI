@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CoreGraphicsShim",
+        "repositoryURL": "https://github.com/Cosmo/CoreGraphicsShim.git",
+        "state": {
+          "branch": "master",
+          "revision": "d2aec4b41d4f92371198b9a382f35749254f0a80",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
