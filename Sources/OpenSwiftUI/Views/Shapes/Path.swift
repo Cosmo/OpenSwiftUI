@@ -1,8 +1,11 @@
+#if canImport(Foundation)
 import Foundation
-#if os(Linux)
-import CoreGraphicsShim
-#else
+#endif
+
+#if canImport(CoreGraphics)
 import CoreGraphics
+#else
+import CoreGraphicsShim
 #endif
 
 internal struct FixedRoundedRect: Equatable {

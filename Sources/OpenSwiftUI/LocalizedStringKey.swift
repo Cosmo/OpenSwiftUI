@@ -1,3 +1,4 @@
+#if canImport(Foundation)
 public struct LocalizedStringKey {
     internal var key: String
     private var hasFormatting: Bool = false
@@ -10,3 +11,4 @@ public struct LocalizedStringKey {
         self.key = value
     }
 }
+#endif

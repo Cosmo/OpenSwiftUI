@@ -1,4 +1,12 @@
+#if canImport(Foundation)
 import Foundation
+#endif
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+#else
+import CoreGraphicsShim
+#endif
 
 public struct VStack<Content>: View where Content: View {
     public typealias Body = Never

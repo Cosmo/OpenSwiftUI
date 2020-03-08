@@ -1,4 +1,12 @@
+#if canImport(Foundation)
 import Foundation
+#endif
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+#else
+import CoreGraphicsShim
+#endif
 
 public class AnyColorBox {
 }
@@ -60,7 +68,11 @@ public class DisplayP3: AnyColorBox {
 
 extension Double {
     fileprivate var hexString: String {
+        #if canImport(Foundation)
         return String(format: "%02X", Int((self * 255).rounded()))
+        #else
+        fatalError("Not Implemented.")
+        #endif
     }
 }
 

@@ -1,4 +1,12 @@
+#if canImport(Foundation)
 import Foundation
+#endif
+
+#if canImport(CoreGraphics)
+import CoreGraphics
+#else
+import CoreGraphicsShim
+#endif
 
 public protocol PickerStyle {
     static func _makeView<SelectionValue>(value: _GraphValue<_PickerValue<Self, SelectionValue>>, inputs: _ViewInputs) -> _ViewOutputs where SelectionValue: Hashable
@@ -69,11 +77,13 @@ public struct Picker<Label, SelectionValue, Content>: View where Label: View, Se
 }
 
 extension Picker where Label == Text {
+    #if canImport(Foundation)
     public init(_ titleKey: LocalizedStringKey, selection: Binding<SelectionValue>, @ViewBuilder content: () -> Content) {
         self.selection = selection
         self.label = Text(titleKey)
         self.content = content()
     }
+    #endif
     
     public init<S>(_ title: S, selection: Binding<SelectionValue>, @ViewBuilder content: () -> Content) where S: StringProtocol {
         self.selection = selection
