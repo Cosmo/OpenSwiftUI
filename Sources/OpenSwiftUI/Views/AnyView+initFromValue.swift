@@ -36,11 +36,13 @@ extension AnyViewConvertible {
         // Find witness table to View.
         // This should be equivalent to saying `view as? View`, if it was allowed.
         guard let witnessTable = _conformsToProtocol(Self.self, viewMetadata.protocolDescriptorVector) else { return nil }
+        let conformanceRecord = ProtocolConformanceRecord(type: Self.self,
+                                                          witnessTable: Int(bitPattern: witnessTable))
 
         let pointer = UnsafeMutablePointer<Self>.allocate(capacity: 1)
         pointer.initialize(to: view as! Self)
         defer { pointer.deallocate() }
-        return anyViewFactory(pointer, Self.self, witnessTable)
+        return anyViewFactory(pointer, conformanceRecord)
     }
 }
 
@@ -78,7 +80,7 @@ public func _anyViewFactory<C : View>(from view: C) -> AnyView {
     return AnyView(view)
 }
 
-private typealias AnyViewFactory = @convention(thin) (UnsafeRawPointer, Any.Type, UnsafeRawPointer) ->(AnyView)
+private typealias AnyViewFactory = @convention(thin) (UnsafeRawPointer, ProtocolConformanceRecord) ->(AnyView)
 
 // In order to call `_anyViewFactory` without knowing the Type at compile time
 // We can find the address of the function and call it ourselves
