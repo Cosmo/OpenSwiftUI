@@ -39,6 +39,7 @@ extension AnyViewConvertible {
 
         let pointer = UnsafeMutablePointer<Self>.allocate(capacity: 1)
         pointer.initialize(to: view as! Self)
+        defer { pointer.deallocate() }
         return anyViewFactory(pointer, Self.self, witnessTable)
     }
 }
