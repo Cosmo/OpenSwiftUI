@@ -39,10 +39,9 @@ extension AnyViewConvertible {
         let conformanceRecord = ProtocolConformanceRecord(type: Self.self,
                                                           witnessTable: Int(bitPattern: witnessTable))
 
-        let pointer = UnsafeMutablePointer<Self>.allocate(capacity: 1)
-        pointer.initialize(to: view as! Self)
-        defer { pointer.deallocate() }
-        return anyViewFactory(pointer, conformanceRecord)
+        return withUnsafePointer(to: view as! Self) { pointer in
+            return anyViewFactory(pointer, conformanceRecord)
+        }
     }
 }
 
