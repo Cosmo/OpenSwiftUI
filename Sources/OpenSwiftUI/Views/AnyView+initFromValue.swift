@@ -84,7 +84,5 @@ private typealias AnyViewFactory = @convention(thin) (UnsafeRawPointer, Protocol
 // In order to call `_anyViewFactory` without knowing the Type at compile time
 // We can find the address of the function and call it ourselves
 private let anyViewFactory: AnyViewFactory = {
-    let symbolName = "_open_swift_ui_anyViewFactory".cString(using: .utf8)!
-    let pointer = loadAddressForSymbol(symbolName)
-    return unsafeBitCast(pointer, to: AnyViewFactory.self)
+    return unsafeBitCast(anyViewFactorySymbol(), to: AnyViewFactory.self)
 }()

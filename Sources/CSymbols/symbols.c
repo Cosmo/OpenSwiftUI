@@ -1,13 +1,8 @@
 
-#ifdef __linux__
-#define _GNU_SOURCE
-#endif
-
 #include <CSymbols.h>
-#include <stddef.h>
-#include <dlfcn.h>
 
-void *loadAddressForSymbol(const char *symbolName) {
-    void *handle = dlopen(NULL, RTLD_GLOBAL);
-    return dlsym(handle, symbolName);
+extern void _open_swift_ui_anyViewFactory(void);
+
+void *anyViewFactorySymbol() {
+    return &_open_swift_ui_anyViewFactory;
 }
