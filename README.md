@@ -159,7 +159,7 @@ Xcode 11.2 or higher is required.
 
 | Status | Name | Notes |
 | --- | --- | --- |
-| ⚠️ | `struct AnyView` | `init?(_fromValue value: Any)` missing. |
+| ✅ | `struct AnyView` | |
 | ✅ | `struct TupleView` | |
 
 ### Drawing and Animation

@@ -17,10 +17,6 @@ public struct AnyView: View {
         _storage = AnyViewStorage<V>(view)
     }
     
-    public init?(_fromValue value: Any) {
-        fatalError()
-    }
-    
     public typealias Body = Never
     public var body: Never {
         fatalError()
